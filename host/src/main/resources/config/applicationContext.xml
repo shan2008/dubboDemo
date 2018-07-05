@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+
+
+
+   <!-- <bean id="userInfoRespository" class="UserInfoRespositoryImpl" />
+
+    <bean id="userInfoService" class="UserInfoServiceImpl">
+        <property name="userInfoRespository" ref="userInfoRespository"></property>
+    </bean>-->
+
+
+    <context:component-scan base-package="youshan.com"/>
+
+    <dubbo:application name="dubboDemo"  />
+    <dubbo:registry address="zookeeper://localhost:2181" />
+    <dubbo:protocol name="dubbo" port="20880" />
+    <dubbo:service interface="youshan.com.consumer.service.UserInfoService" ref="userInfoServiceImpl" />
+
+</beans>

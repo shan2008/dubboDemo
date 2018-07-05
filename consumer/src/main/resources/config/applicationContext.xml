@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+
+    <context:component-scan base-package="youshan.com"/>
+
+    <dubbo:application name="Consumer"/>
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" check="false"/>
+
+    <dubbo:reference id="demoService" interface="youshan.com.consumer.service.UserInfoService" check="false"/>
+
+</beans>
